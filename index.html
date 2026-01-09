@@ -31,6 +31,7 @@
         }
       }
     }
+    /* あんまり対応してないので直接書く（メモとして残す） */
     @function --random(--num <integer>, --seed <number>) returns <integer> {
       result: round(mod(524287 * sin(999983 * (var(--num) + 5007)) * (91 + 29 * cos(524287 * var(--seed))), 8191));
     }
@@ -69,6 +70,7 @@
 <body>
   <input type="checkbox">
   <hr style="--sibling-index: 1"><hr style="--sibling-index: 2"><hr style="--sibling-index: 3"><hr style="--sibling-index: 4"><hr style="--sibling-index: 5"><hr style="--sibling-index: 6"><hr style="--sibling-index: 7"><hr style="--sibling-index: 8"><hr style="--sibling-index: 9"><hr style="--sibling-index: 10">
+  hr style="--sibling-index: 11"><hr style="--sibling-index: 12"><hr style="--sibling-index: 13"><hr style="--sibling-index: 14"><hr style="--sibling-index: 15"><hr style="--sibling-index: 16"><hr style="--sibling-index: 17"><hr style="--sibling-index: 18"><hr style="--sibling-index: 19"><hr style="--sibling-index: 20">
   <div class="box"></div>
 </body>
 </html>
