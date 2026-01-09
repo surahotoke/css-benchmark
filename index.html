@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>HTML要素部分最小文字数で最大限ページ重くするチャレンジ</title>
+  <style>
+    body {
+      display: flex;
+      flex-wrap: wrap;
+      counter-reset: apple;
+      background: white !important;
+    }
+    body {
+      *, *::marker, *::before, *::after, *::before::marker, *::after::marker, *::scroll-button(*), *::scroll-marker-group, *::scroll-marker {
+        display: list-item;
+        width: 5px;
+        aspect-ratio: 1;
+        background: conic-gradient(rgba(255, 0, 0, 0.482), rgba(0, 0, 255, 0.434)), linear-gradient(rgba(255, 0, 208, 0.241), rgba(108, 204, 87, 0.374));
+        animation: h 1s infinite;
+        order: --random(sibling-index(), var(--order));
+        padding: calc(0.0005px * --random(sibling-index(), var(--order)));
+        border: dotted;
+        margin: calc(0.001px * --random(sibling-index(), var(--order)));
+        box-shadow: 10px 5px 5px #f007;
+        rotate: calc(1deg * --random(sibling-index(), var(--order)));
+        scale: 3;
+        counter-increment: apple;
+        content: counter(apple);
+        scroll-marker-group: after;
+      }
+    }
+    @function --random(--num <integer>, --seed <number>) returns <integer> {
+      result: round(mod(524287 * sin(999983 * (var(--num) + 5007)) * (91 + 29 * cos(524287 * var(--seed))), 8191));
+    }
+    @keyframes h {
+      to {
+        filter: blur(9px) brightness(1.5) contrast(2) hue-rotate(180deg) drop-shadow(5px 5px 15px #0f07);
+        --order: 1;
+      }
+    }
+    @property --order {
+      syntax: "<number>";
+      inherits: true;
+      initial-value: 0;
+    }
+  </style>
+</head>
+<body>
+  <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+</body>
+</html>
