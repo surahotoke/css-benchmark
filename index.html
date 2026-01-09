@@ -11,22 +11,24 @@
       background: white !important;
     }
     body {
-      *, *::marker, *::before, *::after, *::before::marker, *::after::marker, *::scroll-button(*), *::scroll-marker-group, *::scroll-marker {
-        display: list-item;
-        width: 5px;
-        aspect-ratio: 1;
-        background: conic-gradient(rgba(255, 0, 0, 0.482), rgba(0, 0, 255, 0.434)), linear-gradient(rgba(255, 0, 208, 0.241), rgba(108, 204, 87, 0.374));
-        animation: h 1s infinite;
-        order: --random(sibling-index(), var(--order));
-        padding: calc(0.0005px * --random(sibling-index(), var(--order)));
-        border: dotted;
-        margin: calc(0.001px * --random(sibling-index(), var(--order)));
-        box-shadow: 10px 5px 5px #f007;
-        rotate: calc(1deg * --random(sibling-index(), var(--order)));
-        scale: 3;
-        counter-increment: apple;
-        content: counter(apple);
-        scroll-marker-group: after;
+      :checked {
+        ~hr, ~hr::marker, ~hr::before, ~hr::after, ~hr::before::marker, ~hr::after::marker, ~hr::scroll-button(*), ~hr::scroll-marker-group, ~hr::scroll-marker {
+          display: list-item;
+          width: 5px;
+          aspect-ratio: 1;
+          background: conic-gradient(rgba(255, 0, 0, 0.482), rgba(0, 0, 255, 0.434)), linear-gradient(rgba(255, 0, 208, 0.241), rgba(108, 204, 87, 0.374));
+          animation: h 1s infinite;
+          order: --random(sibling-index(), var(--order));
+          padding: calc(0.0005px * --random(sibling-index(), var(--order)));
+          border: dotted;
+          margin: calc(0.001px * --random(sibling-index(), var(--order)));
+          box-shadow: 10px 5px 5px #f007;
+          rotate: calc(1deg * --random(sibling-index(), var(--order)));
+          scale: 3;
+          counter-increment: apple;
+          content: counter(apple);
+          scroll-marker-group: after;
+        }
       }
     }
     @function --random(--num <integer>, --seed <number>) returns <integer> {
@@ -43,9 +45,30 @@
       inherits: true;
       initial-value: 0;
     }
+    .box {
+      position: fixed;
+      width: 100px;
+      height: 20px;
+      top: 40%;
+      left: 40%;
+      background-color: red;
+      animation: box 5s linear infinite;
+    }
+    @keyframes box {
+      to {
+        rotate: 1turn;
+      }
+    }
+    input {
+      position: fixed;
+      top: 40%;
+      left: 30%;
+    }
   </style>
 </head>
 <body>
-  <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+  <input type="checkbox">
+  <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+  <div class="box"></div>
 </body>
 </html>
