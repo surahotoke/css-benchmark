@@ -18,12 +18,12 @@
           aspect-ratio: 1;
           background: conic-gradient(rgba(255, 0, 0, 0.482), rgba(0, 0, 255, 0.434)), linear-gradient(rgba(255, 0, 208, 0.241), rgba(108, 204, 87, 0.374));
           animation: h 1s infinite;
-          order: --random(sibling-index(), var(--order));
-          padding: calc(0.0005px * --random(sibling-index(), var(--order)));
+          order: round(mod(524287 * sin(999983 * (var(--sibling-index) + 5007)) * (91 + 29 * cos(524287 * var(--order))), 8191));
+          padding: calc(0.0005px * round(mod(524287 * sin(999983 * (var(--sibling-index) + 5007)) * (91 + 29 * cos(524287 * var(--order))), 8191)));
           border: dotted;
-          margin: calc(0.001px * --random(sibling-index(), var(--order)));
+          margin: calc(0.001px * round(mod(524287 * sin(999983 * (var(--sibling-index) + 5007)) * (91 + 29 * cos(524287 * var(--order))), 8191)));
           box-shadow: 10px 5px 5px #f007;
-          rotate: calc(1deg * --random(sibling-index(), var(--order)));
+          rotate: calc(1deg * round(mod(524287 * sin(999983 * (var(--sibling-index) + 5007)) * (91 + 29 * cos(524287 * var(--order))), 8191)));
           scale: 3;
           counter-increment: apple;
           content: counter(apple);
@@ -68,7 +68,7 @@
 </head>
 <body>
   <input type="checkbox">
-  <hr><hr><hr><hr><hr><hr><hr><hr><hr><hr>
+  <hr style="--sibling-index: 1"><hr style="--sibling-index: 2"><hr style="--sibling-index: 3"><hr style="--sibling-index: 4"><hr style="--sibling-index: 5"><hr style="--sibling-index: 6"><hr style="--sibling-index: 7"><hr style="--sibling-index: 8"><hr style="--sibling-index: 9"><hr style="--sibling-index: 10">
   <div class="box"></div>
 </body>
 </html>
