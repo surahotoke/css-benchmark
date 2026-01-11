@@ -17,12 +17,14 @@
         height: 5px;
         background: conic-gradient(rgba(255, 0, 0, 0.482), rgba(0, 0, 255, 0.434)), linear-gradient(rgba(255, 0, 208, 0.241), rgba(108, 204, 87, 0.374));
         animation: h 1s infinite;
-        order: round(mod(524287 * sin(999983 * (var(--sibling-index) + 5007)) * (91 + 29 * cos(524287 * var(--order))), 8191));
-        padding: calc(0.0005px * round(mod(524287 * sin(999983 * (var(--sibling-index) + 5007)) * (91 + 29 * cos(524287 * var(--order))), 8191)));
-        border: dotted;
-        margin: calc(0.001px * round(mod(524287 * sin(999983 * (var(--sibling-index) + 5007)) * (91 + 29 * cos(524287 * var(--order))), 8191)));
+        /* あんまり@function対応してないので直接書く */
+        --random: round(mod(524287 * sin(999983 * (var(--sibling-index) + 5007)) * (91 + 29 * cos(524287 * var(--order))), 8191));
+        order: var(--random);
+        padding: calc(0.001px * var(--random));
+        border: dotted calc(0.001px * var(--random));
+        margin: calc(0.001px * var(--random));
         box-shadow: 10px 5px 5px #f007;
-        rotate: calc(1deg * round(mod(524287 * sin(999983 * (var(--sibling-index) + 5007)) * (91 + 29 * cos(524287 * var(--order))), 8191)));
+        rotate: calc(1deg * var(--random));
         scale: 3;
         counter-increment: apple;
         content: counter(apple);
