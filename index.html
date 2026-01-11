@@ -4,35 +4,25 @@
 <meta charset="UTF-8">
 <title>HTML要素部分最小文字数で最大限ページ重くするチャレンジ</title>
   <style>
-    body {
+    .benchmark {
       display: flex;
       flex-wrap: wrap;
       counter-reset: apple;
     }
-    /* あんまりsibling-index()対応してないので直接書く */
-    hr:nth-of-type(1) {
-      --sibling-index: 2;
-    }
-    hr:nth-of-type(2) {
-      --sibling-index: 3;
-    }
-    hr:nth-of-type(3) {
-      --sibling-index: 4;
-    }
-    :checked ~ hr {
+    :checked + .benchmark > hr {
       &, &::marker, &::before, &::after, &::before::marker, &::after::marker, &::scroll-button(*), &::scroll-marker-group, &::scroll-marker, &::column, &::column::scroll-marker {
         all: initial;
         display: list-item;
         width: 5px;
         height: 5px;
+        font-size: 5px;
         background: conic-gradient(rgba(255, 0, 0, 0.482), rgba(0, 0, 255, 0.434)), linear-gradient(rgba(255, 0, 208, 0.241), rgba(108, 204, 87, 0.374));
         animation: h 1s infinite;
-        /* あんまり@function対応してないので直接書く */
-        --random: round(mod(524287 * sin(999983 * (var(--sibling-index) + 5007)) * (91 + 29 * cos(524287 * var(--order))), 8191));
+        --random: round(mod(524287 * sin(999983 * (sibling-index() + 5007)) * (91 + 29 * cos(524287 * var(--order))), 8191));
         order: var(--random);
-        padding: calc(0.001px * var(--random));
-        border: dotted calc(0.001px * var(--random));
-        margin: calc(0.001px * var(--random));
+        padding: calc(0.0003px * var(--random));
+        border: dotted calc(0.0003px * var(--random));
+        margin: calc(0.0003px * var(--random));
         box-shadow: 10px 5px 5px #f007;
         rotate: calc(1deg * var(--random));
         scale: 3;
@@ -41,10 +31,6 @@
         columns: 0px;
         scroll-marker-group: after;
       }
-    }
-    /* あんまり対応してないので直接書く（メモとして残す）（sibling-indexも） */
-    @function --random(--num <integer>, --seed <number>) returns <integer> {
-      result: round(mod(524287 * sin(999983 * (var(--num) + 5007)) * (91 + 29 * cos(524287 * var(--seed))), 8191));
     }
     @keyframes h {
       to {
@@ -81,8 +67,13 @@
   </style>
 </head>
 <body>
+  <h1>HTML要素部分最小文字数で最大限ページ重くするチャレンジ</h1>
+  <p>&lt;hr&gt;&lt;hr&gt;&lt;hr&gt;の12文字でこの重さ!!</p>
+  <p>チェックを入れると発動します</p>
   <input type="checkbox">
-  <hr><hr><hr>
+  <div class="benchmark">
+    <hr><hr><hr>
+  </div>
   <div class="box"></div>
 </body>
 </html>
