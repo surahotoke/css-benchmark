@@ -9,6 +9,15 @@
       flex-wrap: wrap;
       counter-reset: apple;
     }
+    hr:nth-of-type(1) {
+      --sibling-index: 2;
+    }
+    hr:nth-of-type(2) {
+      --sibling-index: 3;
+    }
+    hr:nth-of-type(3) {
+      --sibling-index: 4;
+    }
     :checked ~ hr {
       &, &::marker, &::before, &::after, &::before::marker, &::after::marker, &::scroll-button(*), &::scroll-marker-group, &::scroll-marker, &::column, &::column::scroll-marker {
         all: initial;
@@ -72,7 +81,7 @@
 </head>
 <body>
   <input type="checkbox">
-  <hr style="--sibling-index: 1;"><hr style="--sibling-index: 2;"><hr style="--sibling-index: 3;">
+  <hr><hr><hr>
   <div class="box"></div>
 </body>
 </html>
