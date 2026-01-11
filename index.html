@@ -8,30 +8,28 @@
       display: flex;
       flex-wrap: wrap;
       counter-reset: apple;
-      background: white !important;
     }
-    body {
-      :checked {
-        ~hr, ~hr::marker, ~hr::before, ~hr::after, ~hr::before::marker, ~hr::after::marker, ~hr::scroll-button(*), ~hr::scroll-marker-group, ~hr::scroll-marker {
-          display: list-item;
-          width: 5px;
-          aspect-ratio: 1;
-          background: conic-gradient(rgba(255, 0, 0, 0.482), rgba(0, 0, 255, 0.434)), linear-gradient(rgba(255, 0, 208, 0.241), rgba(108, 204, 87, 0.374));
-          animation: h 1s infinite;
-          order: round(mod(524287 * sin(999983 * (var(--sibling-index) + 5007)) * (91 + 29 * cos(524287 * var(--order))), 8191));
-          padding: calc(0.0005px * round(mod(524287 * sin(999983 * (var(--sibling-index) + 5007)) * (91 + 29 * cos(524287 * var(--order))), 8191)));
-          border: dotted;
-          margin: calc(0.001px * round(mod(524287 * sin(999983 * (var(--sibling-index) + 5007)) * (91 + 29 * cos(524287 * var(--order))), 8191)));
-          box-shadow: 10px 5px 5px #f007;
-          rotate: calc(1deg * round(mod(524287 * sin(999983 * (var(--sibling-index) + 5007)) * (91 + 29 * cos(524287 * var(--order))), 8191)));
-          scale: 3;
-          counter-increment: apple;
-          content: counter(apple);
-          scroll-marker-group: after;
-        }
+    :checked ~ hr {
+      &, &::marker, &::before, &::after, &::before::marker, &::after::marker, &::scroll-button(*), &::scroll-marker-group, &::scroll-marker, &::column, &::column::scroll-marker {
+        display: list-item;
+        width: 5px;
+        height: 5px;
+        background: conic-gradient(rgba(255, 0, 0, 0.482), rgba(0, 0, 255, 0.434)), linear-gradient(rgba(255, 0, 208, 0.241), rgba(108, 204, 87, 0.374));
+        animation: h 1s infinite;
+        order: round(mod(524287 * sin(999983 * (var(--sibling-index) + 5007)) * (91 + 29 * cos(524287 * var(--order))), 8191));
+        padding: calc(0.0005px * round(mod(524287 * sin(999983 * (var(--sibling-index) + 5007)) * (91 + 29 * cos(524287 * var(--order))), 8191)));
+        border: dotted;
+        margin: calc(0.001px * round(mod(524287 * sin(999983 * (var(--sibling-index) + 5007)) * (91 + 29 * cos(524287 * var(--order))), 8191)));
+        box-shadow: 10px 5px 5px #f007;
+        rotate: calc(1deg * round(mod(524287 * sin(999983 * (var(--sibling-index) + 5007)) * (91 + 29 * cos(524287 * var(--order))), 8191)));
+        scale: 3;
+        counter-increment: apple;
+        content: counter(apple);
+        columns: 0px;
+        scroll-marker-group: after;
       }
     }
-    /* あんまり対応してないので直接書く（メモとして残す） */
+    /* あんまり対応してないので直接書く（メモとして残す）（sibling-indexも） */
     @function --random(--num <integer>, --seed <number>) returns <integer> {
       result: round(mod(524287 * sin(999983 * (var(--num) + 5007)) * (91 + 29 * cos(524287 * var(--seed))), 8191));
     }
@@ -54,6 +52,7 @@
       left: 40%;
       background-color: red;
       animation: box 5s linear infinite;
+      z-index: 999;
     }
     @keyframes box {
       to {
@@ -64,13 +63,13 @@
       position: fixed;
       top: 40%;
       left: 30%;
+      z-index: 999;
     }
   </style>
 </head>
 <body>
   <input type="checkbox">
-  <hr style="--sibling-index: 1"><hr style="--sibling-index: 2"><hr style="--sibling-index: 3"><hr style="--sibling-index: 4"><hr style="--sibling-index: 5"><hr style="--sibling-index: 6"><hr style="--sibling-index: 7"><hr style="--sibling-index: 8"><hr style="--sibling-index: 9"><hr style="--sibling-index: 10">
-  <hr style="--sibling-index: 11"><hr style="--sibling-index: 12"><hr style="--sibling-index: 13"><hr style="--sibling-index: 14"><hr style="--sibling-index: 15"><hr style="--sibling-index: 16"><hr style="--sibling-index: 17"><hr style="--sibling-index: 18"><hr style="--sibling-index: 19"><hr style="--sibling-index: 20">
+  <hr style="--sibling-index: 1;"><hr style="--sibling-index: 2;"><hr style="--sibling-index: 3;">
   <div class="box"></div>
 </body>
 </html>
